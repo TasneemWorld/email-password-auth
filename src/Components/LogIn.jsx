@@ -89,7 +89,7 @@ const LogIn = () => {
                                     <a href="#" onClick={handelResetPassword} className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
+                            <div className="form-control mt-3">
                                 <button className="btn btn-primary">Login</button>
                                 <label className="label">
                                     <Link className="label-text-alt link link-hover" to="/register">New to Firebase! Please Register</Link>

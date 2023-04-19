@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { sendEmailVerification } from 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 
 // const userAuth = getAuth()
@@ -21,7 +22,7 @@ const Register = () => {
     const [message, setMessage] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const { user, createUser, ProfileUpdate } = useContext(userContext);
+    const { user, createUser, ProfileUpdate, googleSignIn } = useContext(userContext);
     // console.log(user)
 
     const handleRegister = event => {
@@ -97,6 +98,10 @@ const Register = () => {
         setShowPassword(!showPassword);
     };
 
+    const signUpwithGoogle = () => {
+        googleSignIn()
+    }
+
 
     return (
         <div>
@@ -150,6 +155,8 @@ const Register = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
+                                <button className="border  p-2 rounded text-orange-700 font-mono mt-3" onClick={signUpwithGoogle}>LogIn with google <FontAwesomeIcon icon={faGoogle} />
+                                </button>
                             </div>
                             <div className="form-control">
                                 <label className="label">
