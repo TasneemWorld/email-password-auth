@@ -8,6 +8,7 @@ const auth = getAuth(app)
 const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true)
 
     const createUser = (email,password) =>{
         return createUserWithEmailAndPassword(auth, email, password);
@@ -36,6 +37,7 @@ const UserProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth,currentUser =>{
             console.log('auth state change',currentUser);
             setUser(currentUser)
+            setLoading(false);
         });
 
         return () =>{
@@ -50,7 +52,8 @@ const UserProvider = ({ children }) => {
         signIn,
         logOut,
         resetPassword,
-        ProfileUpdate
+        ProfileUpdate,
+        loading,
     }
 
     return (
