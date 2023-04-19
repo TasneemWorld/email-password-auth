@@ -20,6 +20,7 @@ const Header = () => {
                 <a className="btn btn-ghost normal-case text-xl">FireBase</a>
                 <Link className='mr-4' to="/">Home</Link>
                 <Link className='mr-4' to="/login">LogIn</Link>
+                <Link className='mr-4' to="/order">Order</Link>
                 <Link className='mr-4' to="/register">Register</Link>
                 {
                     user ? <>
