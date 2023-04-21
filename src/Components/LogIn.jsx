@@ -2,11 +2,17 @@ import React, { useContext, useRef, useState } from 'react';
 import { userContext } from '../Provider/UserProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
 
     const { signIn, resetPassword, ProfileUpdate } = useContext(userContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location)
+
+    const from = location.state?.from?.pathname || '/';
 
     console.log(resetPassword)
 
@@ -24,10 +30,10 @@ const LogIn = () => {
         event.preventDefault()
 
         const form = event.target;
-        console.log(form.email)
+        // console.log(form.email)
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         resetPassword(email)
 
@@ -35,14 +41,17 @@ const LogIn = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+
                 if (!loggedUser.emailVerified) {
                     showToastMessage('Please Varify your Email');
                     // return;
+                    navigate(from, { replace : true })
                 }
                 else {
                     showToastMessage('successfully Varified');
                 }
                 form.reset();
+
             })
             .catch(error => {
                 setError(error.message)

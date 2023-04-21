@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { userContext } from '../Provider/UserProvider';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
 
     const {user, loading} = useContext(userContext);
+
+    const location = useLocation();
+    console.log(location)
 
     if (loading) {
         return <progress className="progress w-56"></progress>
@@ -14,7 +17,7 @@ const PrivateRoute = ({ children }) => {
         return children;
     }
 
-    return <Navigate to="/login" replace={true} ></Navigate>   //replace is not understand
+    return <Navigate to="/login" state={{from: location}} replace></Navigate>   //replace is not understand
 };
 
 export default PrivateRoute;
