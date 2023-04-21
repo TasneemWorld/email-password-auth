@@ -155,8 +155,6 @@ const Register = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
-                                <button className="border  p-2 rounded text-orange-700 font-mono mt-3" onClick={signUpwithGoogle}>LogIn with google <FontAwesomeIcon icon={faGoogle} />
-                                </button>
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -166,7 +164,12 @@ const Register = () => {
                                 </label>
                             </div>
                         </form>
-
+                        <div>
+                            <div className='form-control'>
+                                <button className="border  p-2  rounded text-orange-700 font-mono" onClick={signUpwithGoogle}>LogIn with google <FontAwesomeIcon icon={faGoogle} />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
